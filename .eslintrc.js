@@ -11,33 +11,38 @@ module.exports = {
         'plugin:import/warnings',
         'plugin:import/typescript',
     ],
-    'overrides': [
+    overrides: [
         {
-            'files': ['*.spec.ts'],
-            'rules': {
+            files: ['*.spec.ts'],
+            rules: {
                 'no-unused-expressions': 'off',
-            }
+            },
         }, {
-            'files': ['*.js'],
-            'rules': {
+            files: ['*.js'],
+            rules: {
                 '@typescript-eslint/no-var-requires': 'off',
             },
         }, {
             // enable the rule specifically for TypeScript files
-            'files': ['*.ts', '*.tsx'],
-            'rules': {
+            files: ['*.ts', '*.tsx'],
+            rules: {
                 '@typescript-eslint/explicit-function-return-type': ['error'],
             },
+        }, {
+            files: ['*.d.ts'],
+            rules: {
+                '@typescript-eslint/no-unused-vars': 'off',
+            },
         },
-
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
+        tsconfigRootDir: __dirname,
         ecmaVersion: 10,
         ecmaFeatures: {
             jsx: true,
         },
-        project: './tsconfig.json',
+        project: './tsconfig.dev.json',
         sourceType: 'module',
     },
     plugins: [
@@ -47,23 +52,25 @@ module.exports = {
         'react',
     ],
     rules: {
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': ['error'],
+        'no-shadow': 'off',
+        '@typescript-eslint/no-shadow': ['error'],
         'class-methods-use-this': 'off',
         'import/extensions': ['error', {
-            'json': 'always',
-            'js': 'never',
-            'ts': 'never',
+            json: 'always',
+            js: 'never',
+            ts: 'never',
         }],
         'import/no-extraneous-dependencies': ['error', {
-            'devDependencies': [
+            devDependencies: [
                 'jest/**',
                 'src/**/__tests__/**',
                 'webpack.config.js',
             ],
         }],
-        // We alias static in webpack. Would be nice to get rid of this once day
-        'import/no-unresolved': ['error', { ignore: ['static\/'] }],
         'import/prefer-default-export': 'off',
-        'indent': 'off',
+        indent: 'off',
         // Override airbnb's max line length rule to:
         // - increase the line length limit to 120
         // - Set tab width to 4 spaces
@@ -84,7 +91,7 @@ module.exports = {
         'no-bitwise': 'off',
         // Boolean logic is boolean logic. Developers hsould understand order of operations.
         'no-mixed-operators': 'off',
-        'no-plusplus': ["error", { "allowForLoopAfterthoughts": true }],
+        'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
         // This is an old rule that is slowly not applicable anymore (i.e. for-of is ok now)
         'no-restricted-syntax': 'off',
         'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
@@ -93,15 +100,19 @@ module.exports = {
         // This is silly to enable
         'react/jsx-props-no-spreading': 'off',
         'react/jsx-sort-props': ['error', {
-            'callbacksLast': true,
-            'ignoreCase': true,
-            'noSortAlphabetically': true,
-            'shorthandFirst': true,
+            callbacksLast: true,
+            ignoreCase: true,
+            noSortAlphabetically: true,
+            shorthandFirst: true,
         }],
+        'react/jsx-uses-react': 'off',
+        'react/react-in-jsx-scope': 'off',
+        'react/require-default-props': 'off',
         'react/state-in-constructor': 'off',
         // Sometimes we just need to
         '@typescript-eslint/ban-ts-ignore': 'off',
-        //Default to off so we don't type check js
+        '@typescript-eslint/ban-ts-comment': 'off',
+        // Default to off so we don't type check js
         '@typescript-eslint/explicit-function-return-type': 'off',
         // Don't enforce the rule that interfaces should not be prefix with `I`
         '@typescript-eslint/interface-name-prefix': 'off',
@@ -147,6 +158,7 @@ module.exports = {
             ],
             ignoreComments: false,
         }],
+        '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
         '@typescript-eslint/type-annotation-spacing': ['error', {
             before: false,
             after: true,
@@ -154,7 +166,7 @@ module.exports = {
                 arrow: {
                     before: true,
                     after: true,
-                }
+                },
             },
         }],
     },
@@ -162,6 +174,12 @@ module.exports = {
         react: {
             pragma: 'React',
             version: 'detect',
+        },
+        'import/parsers': {
+            '@typescript-eslint/parser': [
+                '.ts',
+                '.tsx',
+            ],
         },
         'import/extensions': [
             '.js',
@@ -171,7 +189,9 @@ module.exports = {
             '.txs',
         ],
         'import/resolver': {
-            typescript: {},
+            typescript: {
+                alwaysTryTypes: true,
+            },
         },
     },
 };

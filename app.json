@@ -1,10 +1,22 @@
 {
   "expo": {
+    "backgroundColor": "#133453",
+    "icon": "./assets/icon.png",
     "name": "SousChef",
+    "orientation": "portrait",
+    "primaryColor": "#133453",
     "slug": "SousChef",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "notification": {
+      "androidMode": "collapse",
+      "color": "#133453"
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -12,12 +24,6 @@
     },
     "updates": {
       "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
     },
     "web": {
       "favicon": "./assets/favicon.png"

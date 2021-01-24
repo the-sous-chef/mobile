@@ -1,0 +1,14 @@
+{
+    "extends": "./tsconfig",
+    "compilerOptions": {
+        "diagnostics": true,
+        "extendedDiagnostics": true
+    },
+    "include": [
+        "@types/**/*",
+        "src/**/*",
+        "jest/**/*",
+        ".eslintrc.js",
+        "**/*.config.js"
+    ]
+}
