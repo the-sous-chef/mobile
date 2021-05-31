@@ -1,13 +1,15 @@
+/* eslint-disable react/style-prop-object */
 import React from 'react';
 import { AppLoading } from 'expo';
-import { ThemeProvider } from 'emotion-theming';
 import { StatusBar } from 'expo-status-bar';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
+import * as eva from '@eva-design/eva';
 
-import { Container } from 'src/js/ui';
 import ErrorBoundary from 'src/js/components/ErrorBoundary';
 import Routes from 'src/js/Routes';
 import useTheme from 'src/js/hooks/useTheme';
 import ErrorPage from 'src/js/pages/ErrorPage';
+import { MaterialUIIconsPack } from 'src/js/components/MaterialUIIconsPack';
 
 const App = (): JSX.Element => {
     const [fontsLoaded, theme] = useTheme();
@@ -23,14 +25,15 @@ const App = (): JSX.Element => {
     }
 
     return (
-        <ThemeProvider theme={theme}>
-            <Container>
+        <>
+            <IconRegistry icons={MaterialUIIconsPack} />
+            <ApplicationProvider {...eva} theme={theme}>
                 <ErrorBoundary>
                     <Routes />
                     <StatusBar style="auto" />
                 </ErrorBoundary>
-            </Container>
-        </ThemeProvider>
+            </ApplicationProvider>
+        </>
     );
 };
 

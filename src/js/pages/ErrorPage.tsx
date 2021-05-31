@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import SyntaxHighlighter from 'react-native-syntax-highlighter';
+import { View, StyleSheet } from 'react-native';
+import { Layout, Text } from '@ui-kitten/components';
 
 interface PropTypes extends React.ComponentProps<typeof View> {
     error?: Error | null;
@@ -19,10 +21,16 @@ const ErrorPage = (props: PropTypes): JSX.Element => {
     return (
         <>
             {!!error && (
-                <View style={styles.container} {...rest}>
-                    <Text>{error.message}</Text>
-                    {!!error.stack && (<Text>{error.stack}</Text>)}
-                </View>
+                <Layout style={styles.container} {...rest}>
+                    {/* TODO cool image */}
+                    <Text category="h4">Whoops! That&apos;s an error</Text>
+                    <Text category="s1">{error.message}</Text>
+                    {!!error.stack && (
+                        <SyntaxHighlighter language="javascript">
+                            {error.stack}
+                        </SyntaxHighlighter>
+                    )}
+                </Layout>
             )}
         </>
     );

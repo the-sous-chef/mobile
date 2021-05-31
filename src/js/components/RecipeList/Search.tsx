@@ -1,23 +1,25 @@
-import React, { useState } from 'react';
+import { css } from '@emotion/native';
+import { Button } from '@ui-kitten/components';
+import { useState } from 'react';
 import { View } from 'react-native';
+
+import { spacing } from 'src/js/utils/spacing';
 
 interface PropTypes extends React.ComponentProps<typeof View> {
     onResults: (search: App.Recipes.Search) => void;
 }
 
-const useStyles = makeStyles((theme: UI.Theme) => ({
-    form: {
-        display: 'flex',
-    },
-    searchInput: {
-        paddingBottom: theme.spacing.units(2),
-    },
-}));
+const formCss = css({
+    display: 'flex',
+});
+
+const searchInputCss = css({
+    paddingBottom: spacing(2),
+});
 
 const Search = (props: PropTypes): JSX.Element => {
     const { onResults, ...rest } = props;
     const [searchTerm, setSearchTerm] = useState('');
-    const styles = useStyles();
 
     const handleOnPress = (): void => {
         onResults({
@@ -32,19 +34,19 @@ const Search = (props: PropTypes): JSX.Element => {
 
     return (
         <Card {...rest}>
-            <Card.Content style={styles.form}>
+            <Card.Content style={formCss}>
                 <TextInput
                     label="Search recipes"
                     mode="outlined"
                     placeholder="Begin typing to search for recipes"
-                    style={styles.searchInput}
+                    style={searchInputCss}
                     value={searchTerm}
                     onChangeText={handleChangeText}
                 />
                 <Button
                     accessibilityLabel="Search Recipes"
-                    icon="magnify"
-                    mode="contained"
+                    // icon="magnify"
+                    // mode="contained"
                     onPress={handleOnPress}
                 >
                     Search
