@@ -1,4 +1,4 @@
-import React from 'react';
+import { Text } from '@ui-kitten/components';
 import { View } from 'react-native';
 import { useParams } from 'react-router-native';
 
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     },
 });
 
-const RecipePage = (): JSX.Element => {
+export const RecipePage = (): JSX.Element => {
     const { id } = useParams();
     const styles = useStyles();
 
@@ -20,5 +20,3 @@ const RecipePage = (): JSX.Element => {
         </View>
     );
 };
-
-export default RecipePage;

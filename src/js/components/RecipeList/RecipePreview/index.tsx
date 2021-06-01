@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { Card } from 'react-native-paper';
 
-import RatingAndReviews from 'src/js/components/RecipeList/RecipePreview/RatingAndReviews';
+import RatingAndReviews from 'js/components/RecipeList/RecipePreview/RatingAndReviews';
 
 type RightProps = {
     size: number;

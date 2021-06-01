@@ -2,21 +2,31 @@
   "expo": {
     "backgroundColor": "#133453",
     "icon": "./assets/icon.png",
-    "name": "SousChef",
+    "name": "Sous Chef",
     "orientation": "portrait",
     "primaryColor": "#133453",
     "slug": "SousChef",
     "version": "1.0.0",
+    "android": {
+      "package": "com.souschef.souschef",
+      "versionCode": 1
+    },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.souschef.souschef",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "notification": {
       "androidMode": "collapse",
       "color": "#133453"
     },
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

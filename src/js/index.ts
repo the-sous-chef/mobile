@@ -1,6 +1,6 @@
 import '@expo/match-media';
 import { registerRootComponent } from 'expo';
 
-import App from 'src/js/App';
+import { App } from 'js/App';
 
 registerRootComponent(App);

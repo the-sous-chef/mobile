@@ -9,6 +9,7 @@ module.exports = (api) => {
                 allowUndefined: true,
             }],
             ['module-resolver', {
+                root: ['.'],
                 alias: {
                     assets: './assets',
                     js: './src/js',

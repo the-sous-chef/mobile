@@ -1,17 +1,16 @@
-import React from 'react';
 import { NativeRouter, Route, Redirect } from 'react-router-native';
 
-import ErrorPage from 'src/js/pages/ErrorPage';
-import RecipePage from 'src/js/pages/RecipePage';
-import RecipeListPage from 'src/js/pages/RecipeListPage';
+import { ErrorPage } from 'js/pages/ErrorPage';
+import { RecipePage } from 'js/pages/RecipePage';
+import { RecipeListPage } from 'js/pages/RecipeListPage';
 import {
     ERROR_PATH,
     HOME_PATH,
     RECIPE_PATH,
     RECIPES_PATH,
-} from 'src/js/utils/routes';
+} from 'js/utils/routes';
 
-const Routes = (): JSX.Element => (
+export const Routes = (): JSX.Element => (
     <NativeRouter>
         <Route path={ERROR_PATH} component={ErrorPage} />
         <Route path={RECIPE_PATH} component={RecipePage} />
@@ -19,5 +18,3 @@ const Routes = (): JSX.Element => (
         <Redirect path={HOME_PATH} to={RECIPES_PATH} />
     </NativeRouter>
 );
-
-export default Routes;

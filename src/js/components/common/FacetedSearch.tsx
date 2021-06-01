@@ -12,8 +12,8 @@ import {
 import { Autocomplete, AutocompleteItem, Input } from '@ui-kitten/components';
 import { css } from '@emotion/native';
 
-import { spacing } from 'src/js/utils/spacing';
-import { Chip } from 'src/js/components/common/Chip';
+import { spacing } from 'js/utils/spacing';
+import { Chip } from 'js/components/common/Chip';
 
 export type FacetedSearchRecord = {
     facet: string;

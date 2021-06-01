@@ -2,10 +2,9 @@ import { ComponentProps, useState } from 'react';
 import { Layout, StyleType, useTheme } from '@ui-kitten/components';
 import { css } from '@emotion/native';
 
-import Search from 'src/js/components/RecipeList/Search';
-import Result from 'src/js/components/RecipeList/Results';
-import { spacing } from 'src/js/utils/spacing';
-import { ScrollView } from 'react-native';
+import { Search } from 'js/components/RecipeList/Search';
+import { Result } from 'js/components/RecipeList/Results';
+import { spacing } from 'js/utils/spacing';
 
 const INITIAL_STATE: App.Recipes.Search = {
     term: '',
@@ -25,7 +24,7 @@ const searchCss = css({
     marginBottom: spacing(4),
 });
 
-const RecipeListPage = (props: ComponentProps<typeof Layout>): JSX.Element => {
+export const RecipeListPage = (props: ComponentProps<typeof Layout>): JSX.Element => {
     const [search, setSearch] = useState<App.Recipes.Search>(INITIAL_STATE);
     const theme = useTheme();
 
@@ -36,5 +35,3 @@ const RecipeListPage = (props: ComponentProps<typeof Layout>): JSX.Element => {
         </Layout>
     );
 };
-
-export default RecipeListPage;

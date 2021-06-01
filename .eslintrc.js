@@ -11,6 +11,7 @@ module.exports = {
         'plugin:import/warnings',
         'plugin:import/typescript',
     ],
+    ignorePatterns: ['.eslintrc.js'],
     overrides: [
         {
             files: ['*.spec.ts'],
@@ -38,7 +39,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     parserOptions: {
         tsconfigRootDir: __dirname,
-        ecmaVersion: 10,
+        ecmaVersion: 11,
         ecmaFeatures: {
             jsx: true,
         },
@@ -52,16 +53,13 @@ module.exports = {
         'react',
     ],
     rules: {
-        'no-use-before-define': 'off',
-        '@typescript-eslint/no-use-before-define': ['error'],
-        'no-shadow': 'off',
-        '@typescript-eslint/no-shadow': ['error'],
         'class-methods-use-this': 'off',
         'import/extensions': ['error', {
             json: 'always',
             js: 'never',
             ts: 'never',
         }],
+        'import/no-default-export': 'error',
         'import/no-extraneous-dependencies': ['error', {
             devDependencies: [
                 'jest/**',
@@ -69,6 +67,7 @@ module.exports = {
                 'webpack.config.js',
             ],
         }],
+        'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
         indent: 'off',
         // Override airbnb's max line length rule to:
@@ -94,6 +93,9 @@ module.exports = {
         'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
         // This is an old rule that is slowly not applicable anymore (i.e. for-of is ok now)
         'no-restricted-syntax': 'off',
+        'no-shadow': 'off',
+        'no-underscore-dangle': ['error', { allow: ['_embedded'] }],
+        'no-use-before-define': 'off',
         'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
         'react/jsx-indent': ['error', 4],
         'react/jsx-indent-props': ['error', 4],
@@ -158,7 +160,9 @@ module.exports = {
             ],
             ignoreComments: false,
         }],
+        '@typescript-eslint/no-shadow': ['error'],
         '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
+        '@typescript-eslint/no-use-before-define': ['error'],
         '@typescript-eslint/type-annotation-spacing': ['error', {
             before: false,
             after: true,

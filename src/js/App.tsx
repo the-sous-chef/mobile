@@ -1,17 +1,21 @@
-/* eslint-disable react/style-prop-object */
-import React from 'react';
-import { AppLoading } from 'expo';
+import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
+import { RecoilRoot } from 'recoil';
+import { Suspense } from 'react';
 import * as eva from '@eva-design/eva';
 
-import ErrorBoundary from 'src/js/components/ErrorBoundary';
-import Routes from 'src/js/Routes';
-import useTheme from 'src/js/hooks/useTheme';
-import ErrorPage from 'src/js/pages/ErrorPage';
-import { MaterialUIIconsPack } from 'src/js/components/MaterialUIIconsPack';
+import { ErrorBoundary } from 'js/components/ErrorBoundary';
+import { Routes } from 'js/Routes';
+import { useTheme } from 'js/hooks/useTheme';
+import { ErrorPage } from 'js/pages/ErrorPage';
+import { MaterialUIIconsPack } from 'js/components/MaterialUIIconsPack';
+import { ServiceProvider } from 'js/components/ServiceProvider';
+import { useFirebase } from 'js/hooks/useFirebase';
 
-const App = (): JSX.Element => {
+export const App = (): JSX.Element => {
+    useFirebase();
+
     const [fontsLoaded, theme] = useTheme();
 
     if (!fontsLoaded) {
@@ -25,16 +29,19 @@ const App = (): JSX.Element => {
     }
 
     return (
-        <>
-            <IconRegistry icons={MaterialUIIconsPack} />
-            <ApplicationProvider {...eva} theme={theme}>
-                <ErrorBoundary>
-                    <Routes />
-                    <StatusBar style="auto" />
-                </ErrorBoundary>
-            </ApplicationProvider>
-        </>
+        <RecoilRoot>
+            <ErrorBoundary>
+                <IconRegistry icons={MaterialUIIconsPack} />
+                <ApplicationProvider {...eva} theme={theme}>
+                    <Suspense fallback={AppLoading}>
+                        <ServiceProvider>
+                            <Routes />
+                            {/* eslint-disable-next-line react/style-prop-object */}
+                            <StatusBar style="auto" />
+                        </ServiceProvider>
+                    </Suspense>
+                </ApplicationProvider>
+            </ErrorBoundary>
+        </RecoilRoot>
     );
 };
-
-export default App;

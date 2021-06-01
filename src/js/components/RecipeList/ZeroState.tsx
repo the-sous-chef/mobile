@@ -21,7 +21,7 @@ const Header = (props?: ViewProps): JSX.Element => (
     </View>
 );
 
-const ZeroState = (props: PropTypes): JSX.Element => {
+export const ZeroState = (props: PropTypes): JSX.Element => {
     const { searchTerm, style, ...rest } = props;
 
     return (
@@ -38,5 +38,3 @@ const ZeroState = (props: PropTypes): JSX.Element => {
         </Card>
     );
 };
-
-export default ZeroState;

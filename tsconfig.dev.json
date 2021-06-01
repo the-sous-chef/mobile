@@ -2,13 +2,11 @@
     "extends": "./tsconfig",
     "compilerOptions": {
         "diagnostics": true,
-        "extendedDiagnostics": true
+        "extendedDiagnostics": true,
+        "jsx": "react-jsxdev"
     },
-    "include": [
-        "@types/**/*",
-        "src/**/*",
-        "jest/**/*",
-        ".eslintrc.js",
-        "**/*.config.js"
+    "exclude": [
+        "node_modules/**/*",
+        ".vscode/**/*"
     ]
 }

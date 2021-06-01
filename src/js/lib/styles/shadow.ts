@@ -1,6 +1,6 @@
 import { Animated } from 'react-native';
 
-import { theme } from 'src/js/lib/theme';
+import { theme } from 'js/lib/theme';
 
 const SHADOW_COLOR = theme['color-basic-1100'];
 const SHADOW_OPACITY = 0.24;

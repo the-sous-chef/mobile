@@ -1,14 +1,17 @@
 declare namespace App {
     export type AllowedEnvironments = 'production' | 'development';
-
     export interface Config {
         appName: string;
         defaultCulture: string;
         services: {
             recipes: App.ServiceConfig;
-        };
-        ENVIRONMENT: App.AllowedEnvironments;
-        DEPLOYMENT: string;
+        }
+        environment: App.AllowedEnvironments;
+        deployment: string;
+    }
+
+    export interface DefaultConfig {
+        [key: string]: string | number | boolean;
     }
 
     export interface ServiceConfig {

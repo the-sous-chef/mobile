@@ -11,6 +11,6 @@
 //     transports,
 // } as Logger.LoggerConfig);
 
-export default function getLogger(): Console {
+export function getLogger(): Console {
     return console;
 }

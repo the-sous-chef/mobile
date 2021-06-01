@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const ErrorPage = (props: PropTypes): JSX.Element => {
+export const ErrorPage = (props: PropTypes): JSX.Element => {
     const { error, ...rest } = props;
 
     return (
@@ -35,5 +35,3 @@ const ErrorPage = (props: PropTypes): JSX.Element => {
         </>
     );
 };
-
-export default ErrorPage;

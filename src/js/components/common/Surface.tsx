@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 import { useTheme } from '@ui-kitten/components';
 
-import shadow from 'src/js/lib/styles/shadow';
-import overlay from 'src/js/lib/styles/overlay';
+import shadow from 'js/lib/styles/shadow';
+import overlay from 'js/lib/styles/overlay';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
     /**

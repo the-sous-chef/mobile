@@ -1,11 +1,11 @@
 import { css } from '@emotion/native';
-import { Button } from '@ui-kitten/components';
-import { useState } from 'react';
+import { Button, Card, Input } from '@ui-kitten/components';
+import { useState, ComponentProps } from 'react';
 import { View } from 'react-native';
 
 import { spacing } from 'src/js/utils/spacing';
 
-interface PropTypes extends React.ComponentProps<typeof View> {
+interface PropTypes extends ComponentProps<typeof View> {
     onResults: (search: App.Recipes.Search) => void;
 }
 
@@ -17,7 +17,7 @@ const searchInputCss = css({
     paddingBottom: spacing(2),
 });
 
-const Search = (props: PropTypes): JSX.Element => {
+export const Search = (props: PropTypes): JSX.Element => {
     const { onResults, ...rest } = props;
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -34,10 +34,9 @@ const Search = (props: PropTypes): JSX.Element => {
 
     return (
         <Card {...rest}>
-            <Card.Content style={formCss}>
-                <TextInput
+            <View style={formCss}>
+                <Input
                     label="Search recipes"
-                    mode="outlined"
                     placeholder="Begin typing to search for recipes"
                     style={searchInputCss}
                     value={searchTerm}
@@ -51,9 +50,7 @@ const Search = (props: PropTypes): JSX.Element => {
                 >
                     Search
                 </Button>
-            </Card.Content>
+            </View>
         </Card>
     );
 };
-
-export default Search;

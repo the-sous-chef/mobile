@@ -1,13 +1,12 @@
-import React from 'react';
 import { View } from 'react-native';
 
-import ZeroState from 'src/js/components/RecipeList/ZeroState';
+import { ZeroState } from 'js/components/RecipeList/ZeroState';
 
 interface PropTypes extends React.ComponentProps<typeof View> {
     search: App.Recipes.Search;
 }
 
-const Result = (props: PropTypes): JSX.Element => {
+export const Result = (props: PropTypes): JSX.Element => {
     const { search, ...rest } = props;
 
     return (
@@ -16,5 +15,3 @@ const Result = (props: PropTypes): JSX.Element => {
         </View>
     );
 };
-
-export default Result;

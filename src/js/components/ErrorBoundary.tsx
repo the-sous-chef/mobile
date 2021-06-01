@@ -1,7 +1,7 @@
-import React, { ErrorInfo } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 
-import ErrorPage from 'src/js/pages/ErrorPage';
-import getLogger from 'src/js/utils/logger';
+import { ErrorPage } from 'js/pages/ErrorPage';
+import { getLogger } from 'js/utils/logger';
 
 interface PropTypes {
     children: React.ReactNode;
@@ -19,7 +19,7 @@ interface State {
  * error, etc., should be thrown from a Component to be caught and handled
  * in the ErrorBoundary.
  */
-export default class ErrorBoundary extends React.Component<PropTypes, State> {
+export class ErrorBoundary extends Component<PropTypes, State> {
     state = {
         error: null,
     };
@@ -32,7 +32,7 @@ export default class ErrorBoundary extends React.Component<PropTypes, State> {
         getLogger().error(error, info);
     }
 
-    render(): React.ReactNode {
+    render(): ReactNode {
         const { children } = this.props;
         const { error } = this.state;
 

@@ -11,14 +11,14 @@ import {
     OpenSans_600SemiBold,
 } from '@expo-google-fonts/open-sans';
 
-import { theme } from 'src/js/lib/theme';
+import { theme } from 'js/lib/theme';
 
 type UseThemeTuple = [
     boolean,
     App.Theme | undefined,
 ];
 
-const useTheme = (): UseThemeTuple => {
+export const useTheme = (): UseThemeTuple => {
     const [completeTheme, setCompleteTheme] = useState<App.Theme | undefined>();
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -36,5 +36,3 @@ const useTheme = (): UseThemeTuple => {
 
     return [fontsLoaded, completeTheme];
 };
-
-export default useTheme;

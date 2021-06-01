@@ -13,7 +13,7 @@ import { cloneElement, isValidElement, useRef } from 'react';
 import { Icon, Text, useTheme } from '@ui-kitten/components';
 import { TouchableWeb } from '@ui-kitten/components/devsupport';
 
-import { Surface } from 'src/js/components/common/Surface';
+import { Surface } from 'js/components/common/Surface';
 
 // import type { IconSource } from './Icon';
 // import Icon from './Icon';

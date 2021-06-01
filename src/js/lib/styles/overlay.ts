@@ -1,7 +1,7 @@
 import color from 'color';
 import { Animated } from 'react-native';
 
-import { theme } from 'src/js/lib/theme';
+import { theme } from 'js/lib/theme';
 
 const elevationOverlayTransparency: { [id: number]: number } = {
     1: 5,
