@@ -1,6 +1,6 @@
-import { DEPLOYMENT, ENVIRONMENT } from '@env';
+import Config from 'react-native-config';
 
 export const defaultConfig = {
-    deployment: DEPLOYMENT,
-    environment: ENVIRONMENT,
+    deployment: Config.DEPLOYMENT,
+    environment: Config.ENVIRONMENT,
 } as App.DefaultConfig;

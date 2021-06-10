@@ -64,6 +64,7 @@ module.exports = {
             devDependencies: [
                 'jest/**',
                 'src/**/__tests__/**',
+                'metro.config.js',
                 'webpack.config.js',
             ],
         }],

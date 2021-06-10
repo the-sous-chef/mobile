@@ -1,5 +1,12 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+const { getDefaultConfig } = require('@expo/metro-config');
 const MetroConfig = require('@ui-kitten/metro-config');
+
+const defaultConfig = getDefaultConfig(__dirname);
+
+defaultConfig.transformer.minifierPath = 'metro-minify-terser';
+defaultConfig.transformer.minifierConfig = {
+    // Terser options...
+};
 
 const evaConfig = {
     evaPackage: '@eva-design/eva',
@@ -8,5 +15,5 @@ const evaConfig = {
 };
 
 module.exports = MetroConfig.create(evaConfig, {
-    // Whatever was previously specified
+    ...defaultConfig,
 });

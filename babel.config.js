@@ -12,7 +12,7 @@ module.exports = (api) => {
                 root: ['.'],
                 alias: {
                     assets: './assets',
-                    js: './src/js',
+                    src: './src',
                 },
                 extensions: [
                     '.js',

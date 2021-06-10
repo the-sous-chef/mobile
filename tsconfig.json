@@ -9,7 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "inlineSources": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "react-native",
     "lib": [
       "ESNext",
       "DOM"
@@ -21,10 +21,7 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "outDir": "./dist",
-    "paths": {
-      "@env": ["./node_modules/react-native-dotenv"],
-      "js/*": ["./src/js/*"]
-    },
+    "paths": {},
     "preserveConstEnums": true,
     "resolveJsonModule": true,
     "sourceMap": true,
