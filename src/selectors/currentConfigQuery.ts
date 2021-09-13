@@ -3,15 +3,15 @@ import {
     getRemoteConfig, fetchAndActivate, getValue,
 } from 'firebase/remote-config';
 
-import { defaultConfig } from 'src/config/default';
+import { config } from 'src/config';
 
 const remoteConfig = getRemoteConfig();
 
-remoteConfig.defaultConfig = defaultConfig;
+remoteConfig.defaultConfig = config as App.DefaultConfig;
 
 function buildConfig(): App.Config {
     return {
-        ...defaultConfig,
+        ...config,
         services: JSON.parse(getValue(remoteConfig, 'services').asString()),
     } as App.Config;
 }
@@ -23,11 +23,15 @@ export const currentConfigRequestIDState = atomFamily({
 
 export const currentConfigQuery = selectorFamily({
     key: 'CurrentConfig',
-    get: (accessToken) => async ({ get }): Promise<App.Config> => {
-        get(currentConfigRequestIDState(accessToken));
+    get: (accessToken: string | undefined) => async ({ get }): Promise<App.Config | null> => {
+        if (accessToken) {
+            get(currentConfigRequestIDState(accessToken));
 
-        await fetchAndActivate(remoteConfig);
+            await fetchAndActivate(remoteConfig);
 
-        return buildConfig();
+            return buildConfig();
+        }
+
+        return null;
     },
 });

@@ -186,16 +186,10 @@ module.exports = {
                 '.tsx',
             ],
         },
-        'import/extensions': [
-            '.js',
-            '.jsx',
-            '.mjs',
-            '.ts',
-            '.txs',
-        ],
         'import/resolver': {
             typescript: {
                 alwaysTryTypes: true,
+                project: path.resolve(__dirname, 'tsconfig.dev.json'),
             },
         },
     },

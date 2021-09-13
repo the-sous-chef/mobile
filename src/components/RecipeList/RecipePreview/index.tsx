@@ -1,18 +1,23 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Card } from 'react-native-paper';
+import React, { ComponentProps } from 'react';
+import { Image } from 'react-native';
+import { Card, Text } from '@ui-kitten/components';
 
-import RatingAndReviews from 'src/components/RecipeList/RecipePreview/RatingAndReviews';
+import { RatingAndReviews } from 'src/components/RecipeList/RecipePreview/RatingAndReviews';
+import styled from '@emotion/native';
+import { spacing } from 'src/utils/spacing';
 
-type RightProps = {
-    size: number;
-};
-
-interface PropTypes extends React.ComponentProps<typeof View> {
+interface PropTypes extends Omit<ComponentProps<typeof Card>, 'header'> {
     recipe: App.Recipes.Recipe;
 }
 
-const RecipePreview = (props: PropTypes): JSX.Element => {
+const StyledView = styled.View`
+    display: flex;
+    justify-content: space-between;
+    align-contents: center;
+    margin: ${spacing(1)} ${spacing(1)} 0 ${spacing(1)}
+`;
+
+export const RecipePreview = (props: PropTypes): JSX.Element => {
     const {
         recipe: {
             difficulty,
@@ -24,16 +29,16 @@ const RecipePreview = (props: PropTypes): JSX.Element => {
     } = props;
 
     return (
-        <Card {...rest}>
-            <Card.Cover source={{ uri: images[0].uri }} />
-            <Card.Title
-                title={name}
-                right={(rightProps: RightProps): JSX.Element => (
-                    <RatingAndReviews difficulty={difficulty} rating={rating} {...rightProps} />
-                )}
-            />
+        <Card
+            {...rest}
+            header={(headerProps): JSX.Element => (
+                <StyledView {...headerProps}>
+                    <Text category="label">{name}</Text>
+                    <RatingAndReviews difficulty={difficulty} rating={rating} />
+                </StyledView>
+            )}
+        >
+            <Image source={{ uri: images[0].uri }} />
         </Card>
     );
 };
-
-export default RecipePreview;
