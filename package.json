@@ -1,26 +1,49 @@
 {
-  "name": "sous-chef-mobile",
+  "name": "@thesouschef/mobile",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
+  "engines": {
+    "node": ">=22.7.0"
+  },
+  "engineStrict": true,
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "prepare": "is-ci || sh ./scripts/prepare.sh",
+    "web": "expo start --web",
+    "format": "prettier . --ignore-unknown --write",
+    "format:check": "prettier . --ignore-unknown --check",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "expo": "~46.0.16",
-    "expo-status-bar": "~1.4.0",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
-    "react-native": "0.69.6",
-    "react-native-web": "~0.18.7"
+    "expo": "~51.0.31",
+    "expo-status-bar": "~1.12.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.74.5",
+    "react-native-web": "~0.19.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "@types/react": "~18.0.14",
-    "@types/react-native": "~0.69.1",
-    "typescript": "~4.3.5"
+    "@babel/core": "^7.20.0",
+    "@commitlint/config-conventional": "^19.4.1",
+    "@thesouschef/eslint-config": "^2.0.1",
+    "@thesouschef/eslint-config-react-native": "^2.0.1",
+    "@thesouschef/prettier": "^2.0.1",
+    "@types/react": "~18.2.79",
+    "@types/react-native": "~0.72.8",
+    "commitlint": "^19.4.1",
+    "husky": "^9.1.5",
+    "is-ci": "^3.0.1",
+    "lint-staged": "^15.2.9",
+    "pinst": "^3.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.3.3"
   },
-  "private": true
+  "private": true,
+  "type": "module",
+  "volta": {
+    "node": "22.7.0"
+  }
 }
